@@ -1,0 +1,87 @@
+//ellipsis 말줄임시 사용, 기본 1줄(1줄이면서 webkit-box로 사용할경우 boxline:1)
+@mixin ellipsis($count:1,$boxline:null){
+	overflow:hidden;
+	text-overflow:ellipsis;
+	@if $count == 1{
+		@if $boxline{
+			display:-webkit-box;
+			-webkit-line-clamp:$boxline;
+			-webkit-box-orient:vertical;
+		}@else{
+			white-space:nowrap;
+		}
+	}@else{
+		display:-webkit-box;
+		-webkit-line-clamp:$count;
+		-webkit-box-orient:vertical;
+	}
+}
+
+//== Animation
+@mixin animation($animation){
+	-webkit-animation:$animation;
+	animation:$animation;
+}
+@mixin animation-delay($delay){
+	-webkit-animation-delay:$delay;
+	animation-delay:$delay;
+}
+
+//Keyframes
+@mixin keyframes($name){
+	@-webkit-keyframes #{$name}{
+		@content;
+	}
+	@keyframes #{$name}{
+		@content;
+	}
+}
+
+//position property
+@mixin position($position, $top:null, $right:null, $bottom:null, $left:null) {
+	position:$position;
+	top:$top;
+	right:$right;
+	bottom:$bottom;
+	left:$left;
+}
+
+@mixin fixed($args...){
+	@include position(fixed, $args...);
+}
+
+@mixin absolute($args...){
+	@include position(absolute, $args...);
+}
+
+@mixin posrt($right:0, $top:$right){
+	@include absolute($right:$right, $top:$top);
+}
+
+@mixin poslt($left:0, $top:$left){
+	@include absolute($left:$left, $top:$top);
+}
+
+@mixin posrb($right:0, $bottom:$right){
+	@include absolute($right:$right, $bottom:$bottom);
+}
+
+@mixin poslb($left:0, $bottom:$left){
+	@include absolute($left:$left, $bottom:$bottom);
+}
+
+//box-size model
+@mixin size($width, $height:$width){
+	width:$width;
+	height:$height;
+}
+
+// font
+@mixin font($font-size, $line-height, $color:null, $bold:null){
+	font-size: $font-size;
+	line-height: $line-height;
+	color: $color;
+  @if $bold {
+		font-weight: $bold;
+	} 
+}
