@@ -1,0 +1,156 @@
+@import '../../assets/css/variables.module.scss';
+@import '../../assets/css/mixin.scss';
+
+.item-list {
+  width: 954px;
+  margin: 49px auto 48px;
+  .item-card {
+    height: 378px;
+    border: 1px solid $Gray03;
+    border-radius: 12px;
+    overflow: hidden;
+    box-sizing: border-box;
+    box-shadow: 0px 1px 4px 0px rgba($Shadow,0.04);
+    &.banner {
+      padding: 28px 24px 20px;
+      color: $Gray01;
+      p {
+        @include ellipsis;
+      }
+      span {
+        padding-top: 10px;  
+        .blue {
+          color: $Blue;
+        }
+      }
+      img {
+        height: 142px;
+        padding: 23px 30px;
+      }
+      button {
+        width: 100%;
+      }
+    }  
+    .item-card__thumbnail {
+      position: relative;
+      @include size(294px,180px);
+      background-size: 100%;
+      background-image: url("#{$img-url}/default_logo_share-12e4cb8f87fe87d4c2316feb4cb33f42d7f7584f2548350d6a42e47688a00bd0.png");
+      overflow: hidden;
+      button{
+        @include posrt(16px);
+        z-index: 9
+      }
+      i {
+        display: block;
+        font-size: 14px;
+        opacity: 0.8
+      }
+      .thumbnail_image {
+        @include poslt;
+        @include size(100%);
+        background-color: $White;
+        z-index: 8
+      }
+    }
+    .item-card__information {
+      padding: 10px 20px 15px 20px;
+      border-top: 1px solid $Gray03;
+      .item-card__title {
+        width: 250px;
+        @include font(20px,30px,$Gray01,700);
+        @include ellipsis
+      }    
+      .item-card__skill {
+        @include size(250px,18px);
+        @include font(12px,18px,$Gray02);
+        @include ellipsis
+      }    
+      .item-card__company {
+        display: flex;
+        padding: 12px 0 0 0;
+        margin: 10px 0 0 0;
+        border-top: 1px solid $Gray03;
+        align-items: center
+      }    
+      .item-card__logo {
+        display: flex;
+        @include size(24px);
+        margin: 0 8px 0 0;
+        border: 1px solid $Gray03;
+        line-height: 24px;
+        border-radius: 4px;
+        overflow: hidden;
+        justify-content: center;
+        align-items: center;
+        img {
+          max-width: 100%;
+          max-height: 100%;
+          text-indent: -9999px;
+          border-radius: 4px;
+          vertical-align: middle
+        }
+      }
+      .item-card__name {
+        max-width: 125px;
+        margin: 0 9px 0 0;
+        @include font(16px,24px,$Gray01,700);
+        @include ellipsis
+      }    
+      .item-card__grade {
+        display: flex;
+        height: 24px;
+        box-sizing: border-box;
+        strong {
+          display: flex;
+          margin: 0 4px 0 0;
+          @include font(16px,24px,$Gray01);
+          align-items: center
+        }
+        .jp-star-solid {
+          @include size(14px);
+          margin: 0 3px 0 0;
+          &:before{
+            vertical-align: top
+          }
+        }
+        span {
+          display: inline-block;
+          @include font(16px,24px,$Gray02)
+        }
+      }
+      .item-card__review {
+        height: 40px;
+        margin: 8px 0 0 0;
+        p {
+          width: 245px;
+          @include font(14px,null,$Gray02);
+          @include ellipsis(2)
+        }
+      }
+      .item-card__welfare {
+        height: 22px;
+        margin: 8px 0 0 0;
+        p {
+          @include font(14px,22px,$Gray02,400);
+          @include ellipsis
+        }
+      }
+      .item-card__reward {
+        height: 35px;
+        padding-top: 8px;
+        margin: 12px 0 0 0;
+        border-top: 1px solid $Gray03; 
+        strong {
+          display: flex;
+          height: 27px;
+          @include font(14px,22px,$Gray01);
+          align-items: center;
+          .jp-won-sign {
+            margin: 0 3px 0 -6px;
+          }        
+        }      
+      }
+    }
+  }
+}

@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './variables.module.scss' ;
+@import './mixin.scss';
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+}
+
+
+/* loading */
+.inline_spinner{
+  .loading_spinner_img {
+    @include fixed(50%,null,null,50%);
+    margin-top: -10px;
+    margin-left: -40px;
+    z-index: 9998
+  }
+  
+  .loading_spinner_bg {
+    @include fixed(0,null,null,0);
+    @include size(100%);
+    background-color: $White;
+    opacity: .4;
+    z-index: 9997
+  }
+  
+  .bouncing-loader {
+    display: flex;
+    display: -ms-flexbox;
+    display: -webkit-flex
+  }  
+  .bouncing-loader__round {
+    @include size(20px);
+    background-color: $Green;
+    border-radius: 50%;
+    @include animation(bounce_spinner 0.6s infinite alternate);
+    &:not(:first-child){
+      margin-left: 10px
+    }
+    &:nth-child(2){
+      @include animation-delay(0.2s)
+    }
+    &:nth-child(3){
+      @include animation-delay(0.4s)
+    }
+  }
+}
+
+@include keyframes(bounce_spinner){
+  from {
+    opacity: 1;
+    transform: translateY(0)
+  }
+  to {
+      opacity: 0.1;
+      transform: translateY(-20px)
+  }
+}
+
+/* icons */
+[class^="jp-"],[class*=" jp-"] {
+  &:before{
+    content:'';
+    display: inline-block;
+    background-image: url('../img/css_sprites.png');
+    vertical-align: middle;
+  }
+  &[class*="bookmark"]{
+    &:before{
+      @include size(28px);
+      background-position: -10px -10px;
+    }
+  }
+  &[class*="bookmark-solid"]{
+    &:before{
+      @include size(28px);
+      background-position: -58px -10px;
+    }
+  }
+  &[class*="star-solid"]{
+    &:before{
+      @include size(14px);
+      background-position: -57px -58px;
+    }
+  }
+  &[class*="won-sign"]{
+    &:before{
+      @include size(27px);
+      background-position: -10px -58px;
+    }
+  }
+}
